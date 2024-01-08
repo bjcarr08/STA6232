@@ -1,0 +1,134 @@
+---
+title: "Project 1"
+author: "Brandy Carr"
+format: 
+  html:
+    self-contained: true
+    echo: true
+    message: false
+    warning: false
+    error: true # IMPORTANT NOTE - this makes the file render even if there is an error. it is imperative that you check your .html document *before submission* to make sure that it has all results in it.
+editor: source
+---
+
+**This week you will be analyzing data from the Jackson Heart Study (JHS). You can find the data on Canvas. For full credit, you must include all code chunks and R output backing up your responses.**
+
+**0. Import the JHS data; you can download it from Canvas. You need to research how to read a SAS data file into R (hint: look into the `haven` package).**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1a. Model systolic blood pressure (*sbp*; mmHg) as a function of age (*age*; years), education (*HSgrad*; 0=no, 1=yes), and body mass index (*BMI*; kg/m<sup>2</sup>). Remember to report the resulting model.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1b. Construct the 95% confidence intervals for the regression coefficients. Remember to state the resulting confidence intervals.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1c. Is this a significant regression line? Test at the $\alpha=0.05$ level. Remember to typeset the results.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1d. Which predictors, if any, are significant predictors of systolic blood pressure? Test at the $\alpha=0.05$ level. Remember to typeset the results.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1e. Provide brief interpretations for the slopes of the predictors.**
+
+Insert your answer here :)
+
+**1f. Construct an appropriate data visualization to help with explaining the model results. Systolic blood pressure should be on the y-axis, age should be on the x-axis. You choose what lines to create.**
+
+```{r}
+
+```
+
+**1g. How many suspected outliers exist? You must justify your answer statistically.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1h. How many suspected influential/leverage points exist? You must justify your answer statistically.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1i. Is multicollinearity a problem in this model? You must justify your answer statistically.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**1k. Assess the assumptions on the linear model. Remember to draw your conclusion with appropriate justification.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**2a. Model systolic blood pressure (*sbp*; mmHg) as a function of age (*age*; years), education (*HSgrad*; 0=no, 1=yes), and health status as defined by body mass index (*BMI3cat*; 0=poor health, 1=intermediate health, 2=ideal health). Remember to report the resulting model.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**2b. Construct the 95% confidence intervals for the regression coefficients. Remember to state the resulting confidence intervals.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**2c. Which predictors, if any, are significant predictors of systolic blood pressure? Test at the $\alpha=0.05$ level. Remember to typeset the results.**
+
+```{r}
+
+```
+
+Insert your answer here :) 
+
+**2d. Provide brief interpretations for the slopes of the predictors.**
+
+Insert your answer here :)
+
+**2e. Construct an appropriate data visualization to help with explaining the model results. Systolic blood pressure should be on the y-axis, age should be on the x-axis. You choose what lines to create.**
+
+```{r}
+
+```
+
+**3. Required for graduate students / extra credit for undergraduate students: Write a paragraph to summarize the above analysis, written such that a non-quantitative person could understand. Include if you recommend using BMI as a continuous variable or a categorical variable. For full credit, you must explain your reasoning.**
+
+Insert your answer here :) 
