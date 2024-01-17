@@ -516,15 +516,27 @@ formattable(JHS1[new.x, -c(5:8)], align = "l")
 classpackage::cooks(m1, show.threshold = T, label = F) +
   geom_point() + 
   ylim(NA, 0.02) +
-  geom_point(aes(x = new.x[1], y = new.y[1]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  
+  geom_point(aes(x = new.x[1], y = new.y[1]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[2], y = new.y[2]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[3], y = new.y[3]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[3], y = new.y[3]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[4], y = new.y[4]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[5], y = new.y[5]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[5], y = new.y[5]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[6], y = new.y[6]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[7], y = new.y[7]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[7], y = new.y[7]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[8], y = new.y[8]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
   geom_point(aes(x = new.x[9], y = new.y[9]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  
+  geom_text(aes(x = new.x[1], y = new.y[1]+0.0008, label = new.x[1]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[2], y = new.y[2]+0.0008, label = new.x[2]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[3], y = new.y[3]+0.0008, label = new.x[3]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[4], y = new.y[4]+0.0008, label = new.x[4]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[5], y = new.y[5]+0.0008, label = new.x[5]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[6], y = new.y[6]+0.0008, label = new.x[6]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[7], y = new.y[7]+0.0008, label = new.x[7]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[8], y = new.y[8]+0.0008, label = new.x[8]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[9], y = new.y[9]+0.0008, label = new.x[9]), color = "plum3", hjust = "center") +
+  
   theme(
     title = element_text(size=11, face="bold"),
     plot.background = element_rect(fill="#F9F8F1"))
@@ -542,15 +554,27 @@ formattable(JHS1[new.x, -c(5:8)], align = "l")
 classpackage::cooks(m1, show.threshold = T, label = F) +
   geom_point() + 
   ylim(NA, 0.02) +
-  geom_point(aes(x = new.x[1], y = new.y[1]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  
+  geom_point(aes(x = new.x[1], y = new.y[1]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[2], y = new.y[2]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[3], y = new.y[3]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[3], y = new.y[3]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[4], y = new.y[4]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[5], y = new.y[5]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[5], y = new.y[5]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[6], y = new.y[6]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
-  geom_point(aes(x = new.x[7], y = new.y[7]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  geom_point(aes(x = new.x[7], y = new.y[7]), size = 3, shape = 21, color = "darkorchid", fill = "darkorchid1") +
   geom_point(aes(x = new.x[8], y = new.y[8]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
   geom_point(aes(x = new.x[9], y = new.y[9]), size = 3, shape = 21, color = "plum3", fill = "plum1") +
+  
+  geom_text(aes(x = new.x[1], y = new.y[1]+0.0008, label = new.x[1]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[2], y = new.y[2]+0.0008, label = new.x[2]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[3], y = new.y[3]+0.0008, label = new.x[3]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[4], y = new.y[4]+0.0008, label = new.x[4]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[5], y = new.y[5]+0.0008, label = new.x[5]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[6], y = new.y[6]+0.0008, label = new.x[6]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[7], y = new.y[7]+0.0008, label = new.x[7]), color = "darkorchid", hjust = "center") +
+  geom_text(aes(x = new.x[8], y = new.y[8]+0.0008, label = new.x[8]), color = "plum3", hjust = "center") +
+  geom_text(aes(x = new.x[9], y = new.y[9]+0.0008, label = new.x[9]), color = "plum3", hjust = "center") +
+  
   theme(
     title = element_text(size=11, face="bold"),
     plot.background = element_rect(fill="#F9F8F1"))
@@ -564,21 +588,29 @@ classpackage::cooks(m1, show.threshold = T, label = F) +
 
 Is multicollinearity a problem in this model? You must justify your answer statistically.
 
+$VIF_{j} \phantom0 = \phantom0 \frac{1}{1-R^{2}_j}$
+
+$VIF \gt 10$
+
 ::: {.panel-tabset}
 
 ## Code
 
 ```{r}
 #| eval: false
-
+car::vif(m1)
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
-
+car::vif(m1)
 ```
+
+## Results
+
+No multicollinearity is present.
 
 :::
 
@@ -594,14 +626,26 @@ Assess the assumptions on the linear model. Remember to draw your conclusion wit
 
 ```{r}
 #| eval: false
+classpackage::anova_check(m1)
 
+## qqplot with color formatting
+# car::qqPlot(
+#  MASS::stdres(m1),
+#  col="darkorchid", 
+#  col.lines="plum2")
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
+classpackage::anova_check(m1)
 
+## qqplot with color formatting
+# car::qqPlot(
+#  MASS::stdres(m1),
+#  col="darkorchid", 
+#  col.lines="plum2")
 ```
 
 :::
@@ -622,15 +666,45 @@ Model systolic blood pressure (*sbp*; mmHg) as a function of age (*age*; years),
 
 ```{r}
 #| eval: false
+# check for incomplete/missing cases (11 rows with missing data)
+table(complete.cases(JHS %>% select(sbp, age, HSgrad, BMI3cat)))
 
+# remove incomplete cases
+JHS2 <- JHS %>% select(sbp, age, HSgrad, BMI3cat) %>% na.omit() 
+
+# create dummy vars for BMI3cat
+JHS2 <- JHS2 %>% fastDummies::dummy_cols(select_columns = "BMI3cat")
+
+# model - reference group: BMI3cat_0 (poor health)
+m2 <- glm(sbp ~ age + HSgrad + BMI3cat_1 + BMI3cat_2, data = JHS2, family="gaussian")
+summary(m2)
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
+# check for incomplete/missing cases (11 rows with missing data)
+table(complete.cases(JHS %>% select(sbp, age, HSgrad, BMI3cat)))
 
+# remove incomplete cases
+JHS2 <- JHS %>% select(sbp, age, HSgrad, BMI3cat) %>% na.omit() 
+
+# create dummy vars for BMI3cat
+JHS2 <- JHS2 %>% fastDummies::dummy_cols(select_columns = "BMI3cat")
+
+# model - reference group: BMI3cat_0 (poor health)
+m2 <- glm(sbp ~ age + HSgrad + BMI3cat_1 + BMI3cat_2, data = JHS2, family="gaussian")
+summary(m2)
 ```
+
+## Results
+
+*11 rows containing missing data were removed*
+
+reference group: BMI3cat_0 (poor health) 
+
+$\hat{sbp} = 104.36 + 0.44(age) - 0.92(HSgrad) - 2.17(BMI3cat\_1) - 3.14(BMI3cat\_2)$
 
 :::
 
