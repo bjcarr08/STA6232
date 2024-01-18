@@ -25,7 +25,7 @@ library(tidyverse)
 library(formattable)
 
 # COLOR PALETTE
-pal <- colorspace::terrain_hcl(7, h=c(150,0), c=c(45,45), l=c(60,75), power=c(1.5,1.5))
+# pal <- colorspace::terrain_hcl(7, h=c(150,0), c=c(45,45), l=c(60,75), power=c(1.5,1.5))
 ```
 
 **This week you will be analyzing data from the Jackson Heart Study (JHS). You can find the data on Canvas. For full credit, you must include all code chunks and R output backing up your responses.**
@@ -676,7 +676,7 @@ JHS2 <- JHS %>% select(sbp, age, HSgrad, BMI3cat) %>% na.omit()
 JHS2 <- JHS2 %>% fastDummies::dummy_cols(select_columns = "BMI3cat")
 
 # model - reference group: BMI3cat_0 (poor health)
-m2 <- glm(sbp ~ age + HSgrad + BMI3cat_1 + BMI3cat_2, data = JHS2, family="gaussian")
+m2 <- glm(sbp ~ BMI3cat_1 + BMI3cat_2 + age + HSgrad, data = JHS2, family="gaussian")
 summary(m2)
 ```
 
@@ -694,7 +694,7 @@ JHS2 <- JHS %>% select(sbp, age, HSgrad, BMI3cat) %>% na.omit()
 JHS2 <- JHS2 %>% fastDummies::dummy_cols(select_columns = "BMI3cat")
 
 # model - reference group: BMI3cat_0 (poor health)
-m2 <- glm(sbp ~ age + HSgrad + BMI3cat_1 + BMI3cat_2, data = JHS2, family="gaussian")
+m2 <- glm(sbp ~ BMI3cat_1 + BMI3cat_2 + age + HSgrad, data = JHS2, family="gaussian")
 summary(m2)
 ```
 
@@ -704,7 +704,7 @@ summary(m2)
 
 reference group: BMI3cat_0 (poor health) 
 
-$\hat{sbp} = 104.36 + 0.44(age) - 0.92(HSgrad) - 2.17(BMI3cat\_1) - 3.14(BMI3cat\_2)$
+$\hat{sbp} = 104.36 - 2.17(BMI3cat\_1) - 3.14(BMI3cat\_2) + 0.44(age) - 0.92(HSgrad)$
 
 :::
 
@@ -720,15 +720,25 @@ Construct the 95% confidence intervals for the regression coefficients. Remember
 
 ```{r}
 #| eval: false
-
+confint(m2)
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
-
+confint(m2)
 ```
+
+## Results
+
+- 95% CI for $\beta_{BMI3cat\_1}$ is (-3.41, -0.94)
+
+- 95% CI for $\beta_{BMI3cat\_2}$ is (-4.86, -1.42)
+
+- 95% CI for $\beta_{age}$ is (0.39, 0.49)
+
+- 95% CI for $\beta_{HSgrad}$ is (-2.60, 0.76)
 
 :::
 
@@ -744,15 +754,59 @@ Which predictors, if any, are significant predictors of systolic blood pressure?
 
 ```{r}
 #| eval: false
+JHS2$Health <- factor(
+  JHS2$BMI3cat, 
+  levels = c(0, 1, 2), 
+  labels = c("Poor", "Intermediate", "Ideal"))
 
+m3 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
+
+car::Anova(m3, type = 3)
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
-
+JHS2$Health <- factor(JHS2$BMI3cat, levels = c(0, 1, 2), labels = c("Poor", "Intermediate", "Ideal"))
+m3 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
+#summary(m3)
+car::Anova(m3, type = 3)
 ```
+
+## Results
+
+*I decided to rename the BMI variables, but the model is the same*
+
+**Model:**
+
+$\hat{sbp} = 104.36 - 2.17(HealthIntermediate) - 3.14(HealthIdeal) + 0.44(age) - 0.92(HSgrad)$
+
+**Hypotheses:**
+
+- $H_{0}$ : $\beta_{HealthIntermediate} = \beta_{HealthIdeal} = 0$ in the specified model
+
+- $H_{1}$ : at least one $\beta_{i} \ne 0$ in the specified model
+
+**Test Statistic:** 
+
+- $\chi^2_{0} = 19.41$
+
+**P-Value:** 
+
+- $p < 0.001$
+
+**Rejection Region:** 
+
+- $\alpha = 0.05$
+
+- Reject $H_{0}$ if $p < \alpha$
+
+**Conclusion:** 
+
+- Reject $H_{0}$ 
+
+- There is sufficient evidence to suggest that there is a relationship between systolic blood pressure (`sbp`) and health status as defined by body mass index (`Health`).
 
 :::
 
