@@ -659,6 +659,22 @@ classpackage::anova_check(m1)
 #  col.lines="plum2")
 ```
 
+## Results
+
+**Residual vs. Fitted Plot**
+
+- Residuals appear symmetric about and clustered towards the `Residual = 0` line.
+
+- There does not appear to be any clear patterns.
+
+- Variance does appear to be mostly constant
+
+**Q-Q Plot of Residuals**
+
+- Residuals appear to be right skewed
+
+- Skewness looks acceptable for this assignment (close enough to normal)
+
 :::
 
 </br>
@@ -992,5 +1008,13 @@ Required for graduate students / extra credit for undergraduate students: Write 
 ::: {.panel-tabset}
 
 ## Results
+
+Data from the Jackson Heart Study (JHS) will be analyzed. Specifically we want to know if a persons age + if they did/did not graduate high school + BMI can predict their systolic blood pressure. This is done by fitting a generalized linear model whos outputs we can inspect visually that those variables are good predictors for sbp.
+
+HSgrad was not a good predictor of sbp - it did not appear to be linearly related to sbp & there was no visible clustering between the 2 goups. It should therefore be droped from the final model.
+
+Both age & BMI are good predictors for sbp. 
+
+:(
 
 :::
