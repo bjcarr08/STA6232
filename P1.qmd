@@ -4,7 +4,7 @@ subtitle: "STA 6232 Stats for Data Science II"
 author: "Brandy Carr"
 format: 
   html:
-    fontcolor: "#388061"
+    fontcolor: "#5F5D54"
     backgroundcolor: "#F9F8F1"
     toc: true
     number-sections: true
@@ -23,9 +23,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 library(formattable)
-
-# COLOR PALETTE
-# pal <- colorspace::terrain_hcl(7, h=c(150,0), c=c(45,45), l=c(60,75), power=c(1.5,1.5))
 ```
 
 **This week you will be analyzing data from the Jackson Heart Study (JHS). You can find the data on Canvas. For full credit, you must include all code chunks and R output backing up your responses.**
@@ -96,7 +93,7 @@ summary(m1)
 
 ## Results
 
-*11 rows containing missing data were removed*
+*`11 rows containing missing data were removed`*
 
 $\hat{sbp} = 95.04 + 0.44(age) - 0.84(HSgrad) + 0.24(BMI)$
 
@@ -232,73 +229,73 @@ formattable(
 
 ## Results: age
 
-- Hypotheses:
+- **Hypotheses:**
 
   - $H_{0}$ : $\beta_{age} = 0$
 
   - $H_{1}$ : $\beta_{age} \ne 0$
 
-- Test Statistic:
+- **Test Statistic:**
 
   - $t_{0} = 17.480$
 
-- P-Value:
+- **P-Value:**
 
   - $p < 0.001$
 
-- Rejection Region:
+- **Rejection Region:**
 
   - Reject $H_{0}$ if $p < \alpha;$ $\alpha = 0.05$
 
-- Conclusion:
+- **Conclusion:**
 
   - Reject $H_{0}.$ There is sufficient evidence to suggest that age significantly predicts systolic blood pressure (sbp).
 
 ## Results: HSgrad
 
-- Hypotheses:
+- **Hypotheses:**
 
   - $H_{0}$ : $\beta_{HSgrad} = 0$
 
   - $H_{1}$ : $\beta_{HSgrad} \ne 0$
 
-- Test Statistic:
+- **Test Statistic:**
 
   - $t_{0} = -0.983$
 
-- P-Value:
+- **P-Value:**
 
   - $p = 0.326$
 
-- Rejection Region:
+- **Rejection Region:**
 
   - Reject $H_{0}$ if $p < \alpha;$ $\alpha = 0.05$
 
-- Conclusion:
+- **Conclusion:**
 
   - Fail to reject $H_{0}.$ There is not sufficient evidence to suggest that High School Graduate (HSgrad) significantly predicts systolic blood pressure (sbp).
 
 ## Results: BMI
 
-- Hypotheses:
+- **Hypotheses:**
 
   - $H_{0}$ : $\beta_{BMI} = 0$
 
   - $H_{1}$ : $\beta_{BMI} \ne 0$
 
-- Test Statistic:
+- **Test Statistic:**
 
   - $t_{0} = 5.870$
 
-- P-Value:
+- **P-Value:**
 
   - $p < 0.001$
 
-- Rejection Region:
+- **Rejection Region:**
 
   - Reject $H_{0}$ if $p < \alpha;$ $\alpha = 0.05$
 
-- Conclusion:
+- **Conclusion:**
 
   - Reject $H_{0}.$ There is sufficient evidence to suggest that Body Mass Index (BMI) significantly predicts systolic blood pressure (sbp).
   
@@ -314,11 +311,11 @@ Provide brief interpretations for the slopes of the predictors.
 
 ## Results
 
-- For every $1\phantom/year$ increase in age, systolic blood pressure increases by $0.44\phantom/mmHg$
+- For every $1\phantom/year$ increase in age, systolic blood pressure increases by $0.44 \phantom0 mmHg$
 
-- Being a high school graduate, decreases systolic blood pressure by $0.84\phantom/mmHg$
+- Those that are high school graduates have a systolic blood pressure $0.84 \phantom0 mmHg$ lower than those that did not graduate high school. 
 
-- For every $1\phantom/kg/m^{2}$ increase in BMI, systolic blood pressure increases by $0.24\phantom/mmHg$
+- For every $1\phantom/kg/m^{2}$ increase in BMI, systolic blood pressure increases by $0.24 \phantom0 mmHg$
 
 :::
 
@@ -345,10 +342,10 @@ JHS1 %>%
   ggplot(aes(x = age)) +
   geom_point(aes(y = sbp, shape = HSgrad.factor, fill = HSgrad.factor, color = HSgrad.factor), 
              size = 2, 
-             alpha = 0.5) +
+             alpha = 0.7) +
   scale_shape_manual(values = c(24, 21)) +
-  scale_fill_manual(values = c("plum1", "cornsilk2")) +
-  scale_color_manual(values = c("orchid4", "cornsilk4")) +
+  scale_fill_manual(values = c("paleturquoise1", "cornsilk1")) +
+  scale_color_manual(values = c("paleturquoise4", "cornsilk4")) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.20), color = "darkorchid4", linewidth = 1.5, linetype = 3) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.40), color = "darkorchid3", linewidth = 1, linetype = 2) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.60), color = "darkorchid1", linewidth = 1, linetype = 1) +
@@ -359,18 +356,22 @@ JHS1 %>%
   labs(
     x = "Age", 
     y = "Systolic Blood Pressure", 
-    title = expression(paste(hat(sbp)," = 95.04 + 0.44(age) - 0.84(HSgrad = 0) + 0.24(BMI: 20,40,60)")),
+    #title = expression(paste(hat(sbp)," = 95.04 + 0.44(age) - 0.84(HSgrad = 0) + 0.24(BMI: 20,40,60)")),
     color = "High School Graduate", 
     shape = "High School Graduate", 
     fill = "High School Graduate") +
   ylim(NA, 170) +
   theme_bw() +
   theme(
-    title = element_text(size=12, face="bold"),
+    title = element_text(size = 12, face = "bold", color = colorspace::darken("cornsilk4", 0.3)),
+    #plot.title = element_text(size = 14, face = "bold"),
     legend.position = "top", 
-    legend.justification = "left",
-    plot.background = element_rect(fill="#F9F8F1", color="#F9F8F1"),
-    legend.background = element_rect(color="cornsilk4"))
+    legend.justification = "center",
+    legend.key = element_rect(fill = "#F9F8F1"),
+    #legend.title = element_text(size = 12, color = "cornsilk4"),
+    legend.text = element_text(size = 11, color = colorspace::darken("cornsilk4", 0.3)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 ## Output
@@ -388,10 +389,10 @@ JHS1 %>%
   ggplot(aes(x = age)) +
   geom_point(aes(y = sbp, shape = HSgrad.factor, fill = HSgrad.factor, color = HSgrad.factor), 
              size = 2, 
-             alpha = 0.5) +
+             alpha = 0.7) +
   scale_shape_manual(values = c(24, 21)) +
-  scale_fill_manual(values = c("plum1", "cornsilk2")) +
-  scale_color_manual(values = c("orchid4", "cornsilk4")) +
+  scale_fill_manual(values = c("paleturquoise1", "cornsilk1")) +
+  scale_color_manual(values = c("paleturquoise4", "cornsilk4")) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.20), color = "darkorchid4", linewidth = 1.5, linetype = 3) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.40), color = "darkorchid3", linewidth = 1, linetype = 2) +
   geom_line(aes(y = y_hat_HSgrad.NO_BMI.60), color = "darkorchid1", linewidth = 1, linetype = 1) +
@@ -402,18 +403,22 @@ JHS1 %>%
   labs(
     x = "Age", 
     y = "Systolic Blood Pressure", 
-    title = expression(paste(hat(sbp)," = 95.04 + 0.44(age) - 0.84(HSgrad = 0) + 0.24(BMI: 20,40,60)")),
+    #title = expression(paste(hat(sbp)," = 95.04 + 0.44(age) - 0.84(HSgrad = 0) + 0.24(BMI: 20,40,60)")),
     color = "High School Graduate", 
     shape = "High School Graduate", 
     fill = "High School Graduate") +
   ylim(NA, 170) +
   theme_bw() +
   theme(
-    title = element_text(size=11, face="bold"),
+    title = element_text(size = 12, face = "bold", color = colorspace::darken("cornsilk4", 0.3)),
+    #plot.title = element_text(size = 14, face = "bold"),
     legend.position = "top", 
-    legend.justification = "left",
-    plot.background = element_rect(fill="#F9F8F1", color="#F9F8F1"),
-    legend.background = element_rect(color="cornsilk4"))
+    legend.justification = "center",
+    legend.key = element_rect(fill = "#F9F8F1"),
+    #legend.title = element_text(size = 12, color = "cornsilk4"),
+    legend.text = element_text(size = 11, color = colorspace::darken("cornsilk4", 0.3)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 :::
@@ -436,8 +441,8 @@ formattable(
   count(JHS1, outlier) %>% mutate(outlier = factor(outlier)), 
   align = "l",
   list(
-    outlier = color_tile("#F9F8F1", "plum1"),
-    n = color_tile("plum1", "#F9F8F1")
+    outlier = color_tile("#F9F8F1", alpha("plum1", 0.5)),
+    n = color_tile(alpha("plum1", 0.5), "#F9F8F1")
     )
   )
 
@@ -453,11 +458,14 @@ JHS1 %>%
     fill = "Outlier") +
   theme_bw() +
   theme(
-    title = element_text(size=11, face="bold"),
+    title = element_text(size = 12, face = "bold", color = colorspace::darken("cornsilk4", 0.3)),
     legend.position = "top", 
-    legend.justification = "left",
-    plot.background = element_rect(fill="#F9F8F1", color = "#F9F8F1"),
-    legend.background = element_rect(color="cornsilk4"))
+    legend.justification = "center",
+    legend.key = element_rect(fill = "#F9F8F1"),
+    #legend.title = element_text(size = 12, color = "cornsilk4"),
+    legend.text = element_text(size = 11, colorspace::darken("cornsilk4", 0.3)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 ## Output
@@ -470,8 +478,8 @@ formattable(
   count(JHS1, outlier) %>% mutate(outlier = factor(outlier)), 
   align = "l",
   list(
-    outlier = color_tile("#F9F8F1", "plum1"),
-    n = color_tile("plum1", "#F9F8F1")
+    outlier = color_tile("#F9F8F1", alpha("plum1", 0.5)),
+    n = color_tile(alpha("plum1", 0.5), "#F9F8F1")
     )
   )
 
@@ -487,11 +495,14 @@ JHS1 %>%
     fill = "Outlier") +
   theme_bw() +
   theme(
-    title = element_text(size=11, face="bold"),
+    title = element_text(size = 12, face = "bold", color = colorspace::darken("cornsilk4", 0.3)),
     legend.position = "top", 
-    legend.justification = "left",
-    plot.background = element_rect(fill="#F9F8F1", color = "#F9F8F1"),
-    legend.background = element_rect(color="cornsilk4"))
+    legend.justification = "center",
+    legend.key = element_rect(fill = "#F9F8F1"),
+    #legend.title = element_text(size = 12, color = "cornsilk4"),
+    legend.text = element_text(size = 11, colorspace::darken("cornsilk4", 0.3)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 :::
@@ -700,9 +711,9 @@ summary(m2)
 
 ## Results
 
-*11 rows containing missing data were removed*
+*`11 rows containing missing data were removed`*
 
-reference group: BMI3cat_0 (poor health) 
+**Reference Group:** BMI3cat_0 (poor health) 
 
 $\hat{sbp} = 104.36 - 2.17(BMI3cat\_1) - 3.14(BMI3cat\_2) + 0.44(age) - 0.92(HSgrad)$
 
@@ -759,9 +770,9 @@ JHS2$Health <- factor(
   levels = c(0, 1, 2), 
   labels = c("Poor", "Intermediate", "Ideal"))
 
-m3 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
+m2 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
 
-car::Anova(m3, type = 3)
+car::Anova(m2, type = 3)
 ```
 
 ## Output
@@ -769,14 +780,14 @@ car::Anova(m3, type = 3)
 ```{r}
 #| echo: false
 JHS2$Health <- factor(JHS2$BMI3cat, levels = c(0, 1, 2), labels = c("Poor", "Intermediate", "Ideal"))
-m3 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
+m2 <- glm(sbp ~ Health + age + HSgrad, data = JHS2, family="gaussian")
 #summary(m3)
-car::Anova(m3, type = 3)
+car::Anova(m2, type = 3)
 ```
 
-## Results
+## Results: Health
 
-*I decided to rename the BMI variables, but the model is the same*
+*`Factored BMI3cat and renamed variable to Health`*
 
 **Model:**
 
@@ -808,6 +819,74 @@ $\hat{sbp} = 104.36 - 2.17(HealthIntermediate) - 3.14(HealthIdeal) + 0.44(age) -
 
 - There is sufficient evidence to suggest that there is a relationship between systolic blood pressure (`sbp`) and health status as defined by body mass index (`Health`).
 
+## Results: age
+
+*`Factored BMI3cat and renamed variable to Health`*
+
+**Model:**
+
+$\hat{sbp} = 104.36 - 2.17(HealthIntermediate) - 3.14(HealthIdeal) + 0.44(age) - 0.92(HSgrad)$
+
+**Hypotheses:**
+
+- $H_{0}$ : $\beta_{age} = 0$ in the specified model
+
+- $H_{1}$ : $\beta_{age} \ne 0$ in the specified model
+
+**Test Statistic:** 
+
+- $\chi^2_{0} = 291.78$
+
+**P-Value:** 
+
+- $p < 0.001$
+
+**Rejection Region:** 
+
+- $\alpha = 0.05$
+
+- Reject $H_{0}$ if $p < \alpha$
+
+**Conclusion:** 
+
+- Reject $H_{0}$ 
+
+- There is sufficient evidence to suggest that there is a relationship between systolic blood pressure (`sbp`) and `age`.
+
+## Results: HSgrad
+
+*`Factored BMI3cat and renamed variable to Health`*
+
+**Model:**
+
+$\hat{sbp} = 104.36 - 2.17(HealthIntermediate) - 3.14(HealthIdeal) + 0.44(age) - 0.92(HSgrad)$
+
+**Hypotheses:**
+
+- $H_{0}$ : $\beta_{HSgrad} = 0$ in the specified model
+
+- $H_{1}$ : $\beta_{HSgrad} \ne 0$ in the specified model
+
+**Test Statistic:** 
+
+- $\chi^2_{0} = 1.146$
+
+**P-Value:** 
+
+- $p = 0.284$
+
+**Rejection Region:** 
+
+- $\alpha = 0.05$
+
+- Reject $H_{0}$ if $p < \alpha$
+
+**Conclusion:** 
+
+- Fail to reject $H_{0}$ 
+
+- There is not sufficient evidence to suggest that there is a relationship between systolic blood pressure (`sbp`) and whether or not someone graduated high school (`HSgrad`).
+
 :::
 
 </br>
@@ -818,19 +897,19 @@ Provide brief interpretations for the slopes of the predictors.
 
 ::: {.panel-tabset}
 
-## Code
+## Results
 
-```{r}
-#| eval: false
+**Reference Group:** HealthPoor (previously BMI3cat_0)
 
-```
+$\hat{sbp} = 104.36 - 2.17(HealthIntermediate) - 3.14(HealthIdeal) + 0.44(age) - 0.92(HSgrad)$
 
-## Output
+- Those that have intermediate health status have a systolic blood pressure $2.17 \phantom0 mmHg$ lower than those with poor health status.
 
-```{r}
-#| echo: false
+- Those that have ideal health status have a systolic blood pressure $3.14 \phantom0 mmHg$ lower than those with poor health status.
 
-```
+- For every $1 \phantom0 year$ increase in age, systolic blood pressure increases by $0.44 \phantom0 mmHg$
+
+- Those who graduated high school have a systolic blood pressure $0.92 \phantom0 mmHg$ lower than those who did not graduate high school.
 
 :::
 
@@ -846,14 +925,58 @@ Construct an appropriate data visualization to help with explaining the model re
 
 ```{r}
 #| eval: false
+formattable(cbind("BMI" = JHS1$BMI, JHS2) %>% 
+              group_by(Health) %>% 
+              summarise("Avg BMI" = mean(BMI)),
+            align = "l")
 
+interactions::interact_plot(m2, 
+                            pred = age, 
+                            modx = Health, 
+                            mod2 = HSgrad,
+                            plot.points = T, 
+                            colors = c("mediumorchid2", "cornsilk4", "turquoise3"),
+                            point.alpha = 0.2) + 
+  ylim(NA, 170) +
+  theme_bw() +
+  theme(
+    title = element_text(size = 11, face = "bold", color = colorspace::darken("cornsilk4", 0.4)),
+    legend.position = "top", 
+    legend.justification = "center",
+    legend.key.width = unit(1.5, "cm"),
+    legend.key = element_rect(fill = "#F9F8F1"),
+    legend.text = element_text(size = 10, colorspace::darken("cornsilk4", 0.4)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 ## Output
 
 ```{r}
 #| echo: false
+formattable(cbind("BMI" = JHS1$BMI, JHS2) %>% 
+              group_by(Health) %>% 
+              summarise("Avg BMI" = mean(BMI)),
+            align = "l")
 
+interactions::interact_plot(m2, 
+                            pred = age, 
+                            modx = Health, 
+                            mod2 = HSgrad,
+                            plot.points = T, 
+                            colors = c("mediumorchid2", "cornsilk4", "turquoise3"),
+                            point.alpha = 0.2) + 
+  ylim(NA, 170) +
+  theme_bw() +
+  theme(
+    title = element_text(size = 11, face = "bold", color = colorspace::darken("cornsilk4", 0.4)),
+    legend.position = "top", 
+    legend.justification = "center",
+    legend.key.width = unit(1.5, "cm"),
+    legend.key = element_rect(fill = "#F9F8F1"),
+    legend.text = element_text(size = 10, colorspace::darken("cornsilk4", 0.4)),
+    legend.background = element_rect(fill = "#F9F8F1"),
+    plot.background = element_rect(fill = "#F9F8F1", color = "#F9F8F1"))
 ```
 
 :::
@@ -868,18 +991,6 @@ Required for graduate students / extra credit for undergraduate students: Write 
 
 ::: {.panel-tabset}
 
-## Code
-
-```{r}
-#| eval: false
-
-```
-
-## Output
-
-```{r}
-#| echo: false
-
-```
+## Results
 
 :::
